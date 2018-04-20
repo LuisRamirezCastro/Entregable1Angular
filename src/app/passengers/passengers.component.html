@@ -1,0 +1,14 @@
+ <div class="col-12">
+	<div class="row">
+		<div class="col-6">
+			<ul class="row">
+				<li class="card col-12" *ngFor="let passenger of passengersService.passengers">
+					<app-passenger [passengerparam]="passenger"></app-passenger>
+				</li>
+			</ul>
+		</div>
+		<div class="col-6">
+			<app-passenger-add (addedPassenger)="addedPassenger($event)"></app-passenger-add>
+		</div>
+	</div>
+</div>

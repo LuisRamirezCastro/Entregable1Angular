@@ -1,0 +1,19 @@
+<!--
+<div class="flightdetails" [class.active]="flightparam.status" (click)="toogle()">
+-->
+
+<div class="flightdetails">
+  <div>
+  	<img class="airlinelogo" src="/assets/images/logos/{{flightparam.airline}}.gif" alt="{{flightparam.airline}} Logo"/>
+  </div>
+  <div class="airlinedetails">
+  	  Airline: {{flightparam.airline}}
+	  <br>
+	  Code: {{flightparam.code}}  
+	  <br>
+	  Destination: {{flightparam.destination}}
+	  <br>
+	  Date: {{flightparam.date}}
+	  <br>
+  </div>  	
+</div>

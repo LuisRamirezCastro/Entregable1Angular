@@ -1,0 +1,16 @@
+<div>Create new flight:</div>
+<div>
+	<label>Airline:</label>
+	<input type="text" name="name" [(ngModel)]="newAirline">
+	<br>
+	<label>Code:</label> 
+	<input type="text" name="name" [(ngModel)]="newCode">
+	<br>
+	<label>Destination:</label>
+	<input type="text" name="name" [(ngModel)]="newDestination">
+	<br>
+	<label>Date:</label>
+	<input type="text" name="name" [(ngModel)]="newDate">
+	<br><br>
+<button (click)="addFlight()">Add Flight</button>
+</div>

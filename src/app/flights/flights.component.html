@@ -1,0 +1,14 @@
+ <div class="col-12">
+	<div class="row">
+		<div class="col-6">
+			<ul class="row">
+				<li class="card col-12" *ngFor="let flight of flightsService.flights">
+					<app-flight [flightparam]="flight"></app-flight>
+				</li>
+			</ul>
+		</div>
+		<div class="col-6">
+			<app-flight-add (addedFlight)="addedFlight($event)"></app-flight-add>
+		</div>
+	</div>
+</div>

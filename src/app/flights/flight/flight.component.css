@@ -1,0 +1,21 @@
+.active { 
+    color: red;
+}
+
+.flightdetails{
+	padding: 10px 0 10px 0;
+
+}
+.airlinelogo {
+  object-fit: cover;  
+  max-width: 100px;
+  max-height: 100px;
+  float: left;
+}
+
+.airlinedetails
+{  
+  height: 120px;
+  float: left;
+  padding: 0px 0px 10px 20px;
+};
