@@ -1,4 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+
+import { Passenger } from '../passenger.model';
+import { PassengersService } from '../passengers.service'; 
 
 @Component({
   selector:    'app-passenger',
@@ -7,15 +10,27 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PassengerComponent implements OnInit {
 
-  @Input() passengerparam;
+  @Input() passenger : Passenger;
+  @Output() deletePassenger = new EventEmitter<Passenger>();
+  @Output() editedPassenger   = new EventEmitter<Passenger>();
 
-  constructor() { }
+  public isDeleting = false;
+
+  constructor(private passengersService:PassengersService) { }
 
   ngOnInit() {
   }
 
-    public toogle(){
-  	this.passengerparam.active = !this.passengerparam.active;
+  // public toogle(){
+  //   this.passenger.active = !this.passenger.active;
+  // }
+
+  delete(){
+    this.isDeleting = true;
+    this.deletePassenger.emit(this.passenger);
   }
 
+  edit(){
+    this.editedPassenger.emit(this.passenger);
+  }
 }

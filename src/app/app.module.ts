@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+
 
 // Routing
 import {AppRoutingModule} from './app-routing.module';
@@ -26,6 +28,10 @@ import { AddpassengerComponent } from './passengers/addpassenger/addpassenger.co
 // Imported Services
 import { PassengersService } from './passengers/passengers.service';
 import { FlightsService } from './flights/flights.service';
+import { AuthService } from './shared/auth.service';
+import { DataService } from './shared/data.service';
+
+
 
 
 
@@ -51,11 +57,15 @@ import { FlightsService } from './flights/flights.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpModule,
+    ReactiveFormsModule 
   ],
   providers: [
     PassengersService,
-    FlightsService
+    FlightsService,
+    AuthService,
+    DataService
   ],
   bootstrap: [AppComponent]
 })

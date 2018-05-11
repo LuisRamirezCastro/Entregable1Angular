@@ -1,10 +1,71 @@
-<div>Create new passenger:</div>
-<div>
-	<label>Name:</label>
-	<input type="text" name="name" [(ngModel)]="newName">
-	<br>
-	<label>Destination:</label> 
-	<input type="text" name="name" [(ngModel)]="newDestination">
-	<br><br>
-<button (click)="addPassenger()">Add Passenger</button>
-</div>
+
+
+<form [formGroup]="passengerForm" (ngSubmit)="onSubmit()" novalidate>
+
+	<!-- Label / Textbox para 'Name' -->
+	<!-- Label / Textbox para 'Name' -->
+	<!-- Label / Textbox para 'Name' -->
+	<div class="form-group">
+		<label class="center-block">Name:
+			<input class="form-control" formControlName="name">
+			<!-- <input class="form-control" formControlName="name" [attr.disabled]="isEditing?'':null"> -->
+
+		</label>
+		<div *ngIf="!passengerForm.controls['name'].valid 
+					&& (passengerForm.controls['name'].dirty 
+					|| passengerForm.controls['name'].touched)" 
+					class="alert alert-danger">
+			<div *ngIf="passengerForm.controls['name'].errors.required">
+				Name is required
+			</div>
+		</div>
+	</div>
+	<!-- Label / Textbox para 'Destination' -->
+	<!-- Label / Textbox para 'Destination' -->
+	<!-- Label / Textbox para 'Destination' -->
+	<div class="form-group">
+		<label class="center-block">Destination:
+			<input class="form-control" formControlName="destination">
+		</label>
+		<div *ngIf="!passengerForm.controls['destination'].valid 
+				&& (passengerForm.controls['destination'].dirty 
+				|| passengerForm.controls['destination'].touched)" 
+				class="alert alert-danger">
+			<div *ngIf="passengerForm.controls['destination'].errors.required">
+				Destination is required
+			</div>
+		</div>
+	</div>
+	<!-- Label / Textbox para 'FlightCode' -->
+	<!-- Label / Textbox para 'FlightCode' -->
+	<!-- Label / Textbox para 'FlightCode' -->
+	<div class="form-group">
+		<label class="center-block">Flight Code:
+			<input class="form-control" formControlName="flightcode">
+		</label>
+		<div *ngIf="!passengerForm.controls['flightcode'].valid 
+				&& (passengerForm.controls['flightcode'].dirty 
+				|| passengerForm.controls['flightcode'].touched)" 
+				class="alert alert-danger">
+			<div *ngIf="passengerForm.controls['flightcode'].errors.required">
+				Flight Code is required.
+			</div>
+			<div *ngIf="passengerForm.controls['flightcode'].errors.patternInvalid">
+				Flight Code format invalid (Use 2-3 upper case letters [A-Z] followed by 1-3 numbers [0-9]).
+			</div>
+			<div *ngIf="passengerForm.controls['flightcode'].errors.minlength">
+				Flight Code must be at least 3 characters long.
+			</div>
+			<div *ngIf="passengerForm.controls['flightcode'].errors.maxlength">
+				Flight Code must be less than 7 characters long.
+			</div>
+		</div>
+	</div>
+	<div>
+		<button type="submit"
+		[disabled]="passengerForm.invalid " class="btn btn-success">
+			<span *ngIf="!isEditing">Agregar</span>
+			<span *ngIf="isEditing">Editar</span></button> &nbsp;
+		<button type="reset" (click)="revert()" class="btn btn-danger">Revert</button>
+	</div>
+</form>

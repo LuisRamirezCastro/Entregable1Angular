@@ -2,13 +2,21 @@
 	<div class="row">
 		<div class="col-6">
 			<ul class="row">
-				<li class="card col-12" *ngFor="let flight of flightsService.flights">
-					<app-flight [flightparam]="flight"></app-flight>
+				<li class="card col-12" *ngFor="let flight of flights">
+					<app-flight [flight]="flight" (removeFlight)="removeFlight($event)" (editFlight)="editFlight($event)"></app-flight>
 				</li>
 			</ul>
 		</div>
 		<div class="col-6">
-			<app-flight-add (addedFlight)="addedFlight($event)"></app-flight-add>
+			<app-flight-add 
+			(addedFlight)="addedFlight($event)" 
+			(editFlight)="editFlightSave($event)" 
+			[selectedFlight]="selectedFlight" 
+			[canAdd]='!loading'>
+			</app-flight-add>
+			<div *ngIf="loading">
+				loading...
+			</div>
 		</div>
 	</div>
 </div>

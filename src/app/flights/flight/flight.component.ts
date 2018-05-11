@@ -1,4 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Flight } from '../flight.model';
+
+import { FlightsService } from '../flights.service'; 
 
 @Component({
   selector:    'app-flight',
@@ -7,7 +10,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class FlightComponent implements OnInit {
   
-  @Input() flightparam;
+  // @Input() flightparam;
+
+  @Input() flight : Flight;
+
+  @Output() removeFlight = new EventEmitter<Flight>();
+  @Output() editFlight    = new EventEmitter<Flight>();
+  
+  public isDeleting = false;
 
   constructor() { }
 
@@ -15,6 +25,15 @@ export class FlightComponent implements OnInit {
   }
   
   public toogle(){
-  	this.flightparam.status = !this.flightparam.status;
+  	this.flight.status = !this.flight.status;
+  }
+
+  delete(){
+    this.isDeleting = true;
+    this.removeFlight.emit(this.flight);
+  }
+
+  edit(){
+    this.editFlight.emit(this.flight);
   }
 }

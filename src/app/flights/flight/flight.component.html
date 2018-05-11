@@ -4,16 +4,48 @@
 
 <div class="flightdetails">
   <div>
-  	<img class="airlinelogo" src="/assets/images/logos/{{flightparam.airline}}.gif" alt="{{flightparam.airline}} Logo"/>
+  	<img class="airlinelogo" src="/assets/images/logos/{{flight.airline}}.gif" alt="{{flight.airline}} Logo"/>
   </div>
   <div class="airlinedetails">
-  	  Airline: {{flightparam.airline}}
+  	  Airline: {{flight.airline}}
 	  <br>
-	  Code: {{flightparam.code}}  
+	  Code: {{flight.code}}  
 	  <br>
-	  Destination: {{flightparam.destination}}
+	  Destination: {{flight.destination}}
 	  <br>
-	  Date: {{flightparam.date}}
+	  Date: {{flight.date}}
 	  <br>
-  </div>  	
+  </div>
+  <div class="col-3 actions">
+		<div class="row">
+			<div class="col-12 text-center">
+				<button type="button" class="btn btn-primary" (click)="edit()">Editar</button>
+			</div>
+			<div class="col-12 text-center">
+				<button type="button" class="btn btn-danger" (click)="delete()">
+					<span *ngIf="isDeleting">...</span>
+					<span *ngIf="!isDeleting">Eliminar</span>
+				</button>
+			</div>
+		</div>
+	</div>  	
 </div>
+
+<!-- 
+<div class="row">
+	<div class="col-9">
+		<div class="row">
+			<div class="col-4">Nombre: </div><div class="col-8"> {{producto.nombre}}</div>
+		</div>
+		<div class="row">
+			<div class="col-4">Precio: </div><div class="col-8"> {{producto.precio}}</div>
+		</div>
+		<div class="row">
+			<div class="col-4">Descripcion: </div><div class="col-8"> {{producto.descripcion}}</div>
+		</div>
+		<div class="row">
+			<div class="col-4">Marca: </div><div class="col-8"> {{producto.marca}}</div>
+		</div>
+	</div>
+	
+</div> -->

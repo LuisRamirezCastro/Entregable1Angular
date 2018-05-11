@@ -16,6 +16,15 @@
 .airlinedetails
 {  
   height: 120px;
+  width: 280px;
   float: left;
   padding: 0px 0px 10px 20px;
+}
+
+.actions .text-center {
+	margin-bottom: 5px;
+}
+
+.actions .text-center button{
+	width: 85px;
 };

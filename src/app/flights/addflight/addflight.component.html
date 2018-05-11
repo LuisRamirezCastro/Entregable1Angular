@@ -1,16 +1,91 @@
-<div>Create new flight:</div>
-<div>
-	<label>Airline:</label>
-	<input type="text" name="name" [(ngModel)]="newAirline">
-	<br>
-	<label>Code:</label> 
-	<input type="text" name="name" [(ngModel)]="newCode">
-	<br>
-	<label>Destination:</label>
-	<input type="text" name="name" [(ngModel)]="newDestination">
-	<br>
-	<label>Date:</label>
-	<input type="text" name="name" [(ngModel)]="newDate">
-	<br><br>
-<button (click)="addFlight()">Add Flight</button>
-</div>
+<form (ngSubmit)="onSubmit(flightForm)" #flightForm="ngForm">
+
+	<!-- Label / Textbox para 'Airline' -->
+	<!-- Label / Textbox para 'Airline' -->
+	<!-- Label / Textbox para 'Airline' -->
+
+
+<!--   
+  Flight Model
+
+  public airline: string;
+  public code: string;
+  public destination: string;
+  public date: string;
+
+ -->
+
+	<div class="form-group">
+		<label for="airline">Airline:</label>
+		<input type="text" class="form-control" id="airline"
+		required [(ngModel)]="flight.airline" name="airline" #airline="ngModel">
+		<!-- required [text-contains-validator]="requiredText" [(ngModel)]="flight.airline" name="airline" --> <!-- #airline="ngModel"> -->
+
+		
+		<!-- Validaciones del texto -->
+		<!-- Validaciones del texto -->
+
+		<div [hidden]="airline.valid || airline.pristine" class="alert alert-danger">
+			Airline is required
+		</div>	
+	</div>
+
+	<!-- Label / Textbox para 'Code' -->
+	<!-- Label / Textbox para 'Code' -->
+	<!-- Label / Textbox para 'Code' -->
+
+	<div class="form-group">
+		<label for="code">Code:</label>
+		<input type="text" class="form-control" id="code" name="code" [(ngModel)]="flight.code" #code="ngModel" required pattern="^[A-Z]{2,3}\d{1,3}$">
+				
+		<!-- Validaciones del texto -->
+		<!-- Validaciones del texto -->
+
+		<div [hidden]="code.valid || code.pristine" class="alert alert-danger" *ngIf="code.errors && code.errors.required">
+			Code is required
+		</div>
+		<div [hidden]="code.valid || code.pristine" class="alert alert-danger" *ngIf="code.errors && code.errors.pattern">
+			Flight Code format must use 2-3 upper case letters [A-Z] followed by 1-3 numbers [0-9]
+		</div>
+	</div>
+
+	<!-- Label / Textbox para 'Destination' -->
+	<!-- Label / Textbox para 'Destination' -->
+	<!-- Label / Textbox para 'Destination' -->
+
+	<div class="form-group">
+		<label for="destination">Destination:</label>
+		<input type="text" class="form-control" id="destination"
+		[(ngModel)]="flight.destination" name="destination" #destination="ngModel" required>
+		
+		<!-- Validaciones del texto -->
+		<!-- Validaciones del texto -->
+
+		<div [hidden]="destination.valid || destination.pristine" class="alert alert-danger">
+			Destination is required
+		</div>
+	</div>
+
+	<!-- Label / Textbox para 'Date' -->
+	<!-- Label / Textbox para 'Date' -->
+	<!-- Label / Textbox para 'Date' -->
+
+	<div class="form-group">
+		<label for="date">Date:</label>
+		<input type="text" class="form-control" id="date"
+		[(ngModel)]="flight.date" name="date" #date="ngModel" required>
+
+		<!-- Validaciones del texto -->
+		<!-- Validaciones del texto -->
+
+		<div [hidden]="date.valid || date.pristine" class="alert alert-danger">
+			Date is required
+		</div>
+	</div>
+
+	<button type="submit" class="btn btn-success" [disabled]="!flightForm.form.valid || !canAdd">
+		<span *ngIf="!isEditing">Agregar</span>
+		<span *ngIf="isEditing">Editar</span>
+	</button>
+	<button type="button" class="btn btn-danger" (click)="newFlight(); flightForm.reset()">Revert</button>
+</form>

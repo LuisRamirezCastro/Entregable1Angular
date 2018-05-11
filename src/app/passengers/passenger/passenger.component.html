@@ -1,10 +1,23 @@
-<!--
-<p [class.active]="passengerparam.active" (click)="toogle()">
--->
-<p>
-  Name: {{passengerparam.name}}
-  <br>
-  Destination: {{passengerparam.destination}}
-  <br>
-<!--  Active: {{passengerparam.active}} -->
-</p>
+<div class="passengercontainer">
+	<div class="passengerdetails">
+		<p>
+	  	Name: {{passenger.name}}
+	  	<br>
+	  	Destination: {{passenger.destination}}
+	  	<br>
+	  	Flight Code: {{passenger.flightcode}}
+	  	<br>
+		<!--  Active: {{passengerparam.active}} -->
+		</p>
+	</div>
+	<div class="col-3 actions">
+			<div class="row">
+				<div class="col-12 text-center">
+					<button type="button" class="btn btn-primary" (click)="edit()">Editar</button>
+				</div>
+				<div class="col-12 text-center">
+					<button type="button" class="btn btn-danger" (click)="delete()"><span *ngIf="isDeleting">...</span><span *ngIf="!isDeleting">Eliminar</span></button>
+				</div>
+			</div>
+	</div>		
+</div>
